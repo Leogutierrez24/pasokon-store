@@ -1,16 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Rubik:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
 
-* {
+*
+{
   box-sizing: border-box;
+  font-family: 'Rubik', sans-serif;
 }
 
-body {
+body
+{
   margin: 0;
 }
 
-.products-grid {
+.products-grid
+{
   app-img {
-    img {
+    img
+    {
       border-radius: 10px;
     }
   }

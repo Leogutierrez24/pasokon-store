@@ -1,6 +1,6 @@
 <div class="show-mobile">
   <div class="menu-mobile_container">
-    <button class="menu-btn">
+    <button class="menu-btn" (click)="toggleMenu()">
       <img class="menu-btn_img" src="../../../assets/icons/menu.svg" alt="menu" />
     </button>
     <p>
@@ -9,6 +9,14 @@
     <a class="cart-link" href="#">
       <img class="cart_img" src="../../../assets/icons/cart.svg" alt="logo" />
     </a>
+  </div>
+  <div class="side-menu" [class.active]="activeMenu">
+    <button class="close-btn" (click)="toggleMenu()">Close</button>
+    <ul class="side-menu_links">
+      <li><a class="side-menu_link" href="">All</a></li>
+      <li><a class="side-menu_link" href="">Mouse</a></li>
+      <li><a class="side-menu_link" href="">Keyboard</a></li>
+    </ul>
   </div>
 </div>
 <div class="hide-mobile">
@@ -29,6 +37,7 @@
         <a class="cart-link_desktop" href="">
           <img class="cart_img" src="../../../assets/icons/cart.svg" alt="logo">
         </a>
+        <span class="cart-counter" [class.empty]="cartEmpty()">{{ cartCounter }}</span>
       </div>
     </div>
   </div>
