@@ -15,8 +15,6 @@ export class StoreService {
 
   get ShoppingCart() { return this.myShoppingCart; }
 
-  constructor(){  }
-
   public addProduct(product: Product)
   {
     this.myShoppingCart.push(product);

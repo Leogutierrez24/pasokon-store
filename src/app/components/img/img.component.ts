@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges, OnInit, AfterViewInit, OnDestroy, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-img',
@@ -7,17 +7,11 @@ import { Component, Input, Output, EventEmitter, OnChanges, OnInit, AfterViewIni
 })
 
 export class ImgComponent {
-  public img: string = "";
-
-  @Input("img")
-  set changeImg(value: string)
-  {
-    this.img = value;
-  }
+  @Input() public img = "";
 
   @Output() loaded = new EventEmitter();
 
-  public imageDefault: string = "../../../assets/images/teclado-razer-blackwidow.jpeg";
+  public imageDefault = "../../../assets/images/teclado-razer-blackwidow.jpeg";
 
   public imgError()
   {
