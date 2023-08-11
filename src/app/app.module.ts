@@ -13,6 +13,7 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { ReversePipe } from './pipes/reverse.pipe';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HighlightDirective } from './directives/highlight.directive';
     TopBarComponent,
     ReversePipe,
     TimeAgoPipe,
-    HighlightDirective
+    HighlightDirective,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,

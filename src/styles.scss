@@ -2,6 +2,7 @@
 @import "swiper/scss";
 @import "swiper/scss/navigation";
 @import "swiper/scss/pagination";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 
 *
 {
@@ -22,4 +23,9 @@ body
       border-radius: 10px;
     }
   }
+}
+
+i
+{
+  display: flex;
 }

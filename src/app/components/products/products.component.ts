@@ -13,56 +13,48 @@ export class ProductsComponent implements OnInit {
   public myShoppingCart: Product[] = [];
   public total = 0;
   public products: Product[] = [];
+
   public showProductDetail = false;
-  public selectedProduct: Product =
-  {
-    id: "",
-    title: "",
-    price: 0,
-    description: "",
-    category: {
-      id: 0,
-      name: "",
-      typeImg: ""
-    },
-    images: []
+  public productId = "";
+  private _limit = 10;
+  private _offset = 0;
+
+  constructor(private _storeService: StoreService, private productsService: ProductsService) {
+    this.myShoppingCart = this._storeService.ShoppingCart;
   }
 
-  constructor(private storeService: StoreService, private productsService: ProductsService)
+  private loadProducts(): void
   {
-    this.myShoppingCart = this.storeService.ShoppingCart;
-  }
-
-  ngOnInit(): void {
-    this.productsService.getAllProducts()
-    .subscribe(data =>
-      {
-        this.products = data;
-      });
-  }
-
-  public AddToShoppingCart(product: Product): void
-  {
-    this.storeService.addProduct(product);
-    this.total = this.storeService.getTotal();
-  }
-
-  public toggleProductDetail(): void
-  {
-    this.showProductDetail = !this.showProductDetail;
-  }
-
-  public onShowDetail(id: string): void
-  {
-    this.productsService.getProduct(id)
+    this.productsService.getProducts(this._limit, this._offset)
     .subscribe(data => {
-      this.toggleProductDetail();
-      this.selectedProduct = data;
+      this.products = this.products.concat(data);
+      this._offset += this._limit;
     });
   }
 
-  public createNewProduct()
-  {
+  ngOnInit(): void {
+    this.loadProducts();
+  }
+
+  public AddToShoppingCart(product: Product): void {
+    this._storeService.addProduct(product);
+    this.total = this._storeService.getTotal();
+  }
+
+  public toggleProductDetail(value: boolean): void {
+    this.showProductDetail = value;
+  }
+
+  public onShowDetail(id: string): void {
+    this.toggleProductDetail(true);
+    this.productId = id;
+  }
+
+  public loadMore(): void {
+    this.loadProducts();
+  }
+
+  public createNewProduct(): void {
     const product: CreateProductDTO =
     {
       title: "Nuevo producto",
@@ -72,9 +64,23 @@ export class ProductsComponent implements OnInit {
       categoryId: 1
     }
     this.productsService.createProduct(product)
-    .subscribe(data => {
-      console.log("product created: ", data);
-    });
+      .subscribe(data => {
+        console.log("product created: ", data);
+      });
+  }
+
+  public updateProduct(): void {
+    const changes =
+    {
+      title: "Nuevo title"
+    };
+
+    const id = this.productId;
+
+    this.productsService.updateProduct(id, changes)
+      .subscribe(data => {
+        console.log("updated", data);
+      });
   }
 
 }

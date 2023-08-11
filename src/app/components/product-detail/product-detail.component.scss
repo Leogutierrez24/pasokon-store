@@ -1,0 +1,65 @@
+:host
+{
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+  transition: .3s ease-in-out;
+  &.active
+  {
+    transform: translateX(0);
+    transition: .3s ease-in-out;
+  }
+}
+
+.product-content
+{
+  width: 50%;
+  height: 100vh;
+  padding: 10px;
+  background-color: #fff;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 15;
+  transform: translateX(100%);
+  transition: .4s ease-in-out all;
+  &.show
+  {
+    transform: translateX(0%);
+    transition: .4s ease-in-out all;
+  }
+}
+
+.transparent-background
+{
+  width: 100%;
+  height: 100vh;
+  background-color: #0000006b;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  opacity: 0;
+  transition-duration: .1s;
+  &.change
+  {
+    opacity: 1;
+    transition-duration: .2s;
+    transition-delay: .4s;
+  }
+}
+
+.close-detail_btn
+{
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}

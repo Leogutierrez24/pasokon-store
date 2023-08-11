@@ -1,0 +1,14 @@
+<div class="product-content" [class.show]="showProductDetail">
+  <button class="close-detail_btn" type="button" (click)="onCloseDetail(false)">
+    <i class="bi bi-x-lg"></i>
+  </button>
+  <h1>
+    {{ selectedProduct.title }}
+  </h1>
+  <swiper [slidesPerView]="1">
+    <ng-template swiperSlide *ngFor="let img of selectedProduct.images">
+      <img [src]="img" alt="imagen del producto" />
+    </ng-template>
+  </swiper>
+</div>
+<div class="transparent-background" [class.change]="showProductDetail"></div>

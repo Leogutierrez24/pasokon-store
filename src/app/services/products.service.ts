@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { CreateProductDTO, Product } from '../models/product.model';
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { CreateProductDTO, Product, UpdateProductDTO } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +12,17 @@ export class ProductsService {
   constructor(private http: HttpClient)
   { }
 
-  public getAllProducts()
+  public getProducts(limit: number, offset: number)
   {
-    return this.http.get<Product[]>(this._apiUrl);
+    let params = new HttpParams();
+
+    if (limit != undefined && offset != undefined)
+    {
+      params = params.set("limit", limit);
+      params = params.set("offset", offset);
+    }
+
+    return this.http.get<Product[]>(this._apiUrl, { params });
   }
 
   public getProduct(id: string)
@@ -25,5 +33,15 @@ export class ProductsService {
   public createProduct(dto: CreateProductDTO)
   {
     return this.http.post<Product>(this._apiUrl, dto);
+  }
+
+  public updateProduct(id: string, dto: UpdateProductDTO)
+  {
+    return this.http.put<Product>(`${this._apiUrl}/${id}`, dto);
+  }
+
+  public deleteProduct(id: string)
+  {
+    return this.http.delete<boolean>(`${this._apiUrl}/${id}`);
   }
 }
