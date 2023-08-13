@@ -2,13 +2,18 @@
   <button class="close-detail_btn" type="button" (click)="onCloseDetail(false)">
     <i class="bi bi-x-lg"></i>
   </button>
-  <h1>
+  <h2 class="productDetail-title">
     {{ selectedProduct.title }}
-  </h1>
+  </h2>
   <swiper [slidesPerView]="1">
     <ng-template swiperSlide *ngFor="let img of selectedProduct.images">
       <img [src]="img" alt="imagen del producto" />
     </ng-template>
   </swiper>
+  <h6 class="description-title">description</h6>
+  <p class="product-description">
+   {{ selectedProduct.description }}
+  </p>
+  <button>Add to cart</button>
 </div>
 <div class="transparent-background" [class.change]="showProductDetail"></div>

@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public imgParent: string = "";
+  public imgParent = "";
 
-  public showImage: boolean = true;
+  public showImage = true;
 
   public onLoaded(img: string)
   {

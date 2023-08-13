@@ -1,3 +1,5 @@
+@import "../../../assets/variables";
+
 :host
 {
   width: 100%;
@@ -16,7 +18,7 @@
 
 .product-content
 {
-  width: 50%;
+  width: 90%;
   height: 100vh;
   padding: 10px;
   background-color: #fff;
@@ -62,4 +64,16 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+.description-title
+{
+  margin: 10px 0;
+  color: $whiteFontColor;
+  letter-spacing: .6px;
+}
+
+.product-description
+{
+  margin: 0 0 10px 0;
 }
